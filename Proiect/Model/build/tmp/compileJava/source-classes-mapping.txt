@@ -1,0 +1,10 @@
+org/hibernate/dialect/PostgreSQL95Dialect.java
+ org.hibernate.dialect.PostgreSQL95Dialect
+domain/Personal.java
+ domain.Personal
+domain/Farmacist.java
+ domain.Farmacist
+domain/Medicament.java
+ domain.Medicament
+domain/Comanda.java
+ domain.Comanda

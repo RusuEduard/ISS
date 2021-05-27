@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
+
+    <util:properties id="jdbcUtils" location="classpath:server.properties"/>
+
+    <bean id="persRepo" class="repoImpl.RepoPersonalDB">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="farmRepo" class="repoImpl.RepoFarmacistDB">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="medsRepo" class="repoImpl.RepoMedsDB">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="comRepo" class="repoImpl.RepoComenziDB">
+        <constructor-arg ref="jdbcUtils"/>
+    </bean>
+
+    <bean id="service" class="impl.ServiceImpl">
+        <constructor-arg ref="persRepo"/>
+        <constructor-arg ref="farmRepo"/>
+        <constructor-arg ref="medsRepo"/>
+        <constructor-arg ref="comRepo"/>
+    </bean>
+
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <property name="serviceName" value="Service"/>
+        <property name="service" ref="service"/>
+        <property name="serviceInterface" value="services.IServices"/>
+        <property name="servicePort" value="1099"/>
+    </bean>
+</beans>

@@ -1,0 +1,20 @@
+controllers/AlertMessage.java
+ controllers.AlertMessage
+controllers/CosController.java
+ controllers.CosController
+ controllers.CosController$Med_cant
+controllers/LogInPersonalController.java
+ controllers.LogInPersonalController
+controllers/PersonalController.java
+ controllers.PersonalController
+main/MainFx.java
+ main.MainFx
+controllers/PlaseazaComandaController.java
+ controllers.PlaseazaComandaController
+controllers/ViewComenziController.java
+ controllers.ViewComenziController
+controllers/PersMainPageController.java
+ controllers.PersMainPageController
+controllers/DetaliiComandaController.java
+ controllers.DetaliiComandaController
+ controllers.DetaliiComandaController$Med_cant

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ViewComenziController">
+   <children>
+      <TableView fx:id="comenziTableView" layoutX="24.0" layoutY="40.0" prefHeight="320.0" prefWidth="333.0">
+        <columns>
+          <TableColumn fx:id="staffIdCol" prefWidth="81.60003662109375" text="Staff id" />
+          <TableColumn fx:id="dataCol" prefWidth="112.79998779296875" text="Data" />
+            <TableColumn fx:id="statusCol" prefWidth="138.4000244140625" text="Status" />
+        </columns>
+      </TableView>
+      <Button layoutX="455.0" layoutY="158.0" mnemonicParsing="false" onAction="#detailsButtonHandle" text="Details" />
+      <Button layoutX="461.0" layoutY="249.0" mnemonicParsing="false" onAction="#backButtonHandle" text="Back" />
+   </children>
+</AnchorPane>
