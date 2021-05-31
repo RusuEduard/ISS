@@ -816,7 +816,7 @@ false Zulu
 13158||-9223372036854775808|U|G
 13158||10|U|G</Grants>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>695</IntrospectionStateNumber>
+      <IntrospectionStateNumber>730</IntrospectionStateNumber>
       <Current>1</Current>
       <Relations>sequence|table|16462|16464|1
 sequence|table|16485|16487|1
@@ -886,7 +886,7 @@ sequence|table|16498|16474|6
       <Comment>standard public schema</Comment>
       <StateNumber>287</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>696</IntrospectionStateNumber>
+      <IntrospectionStateNumber>731</IntrospectionStateNumber>
       <Current>1</Current>
     </schema>
     <extension id="19" parent="4" name="plpgsql">
@@ -1028,7 +1028,7 @@ sequence|table|16498|16474|6
     <table id="38" parent="18" name="medicament_cantitate">
       <ObjectId>16553</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>647</StateNumber>
+      <StateNumber>729</StateNumber>
     </table>
     <table id="39" parent="18" name="medicament_comanda">
       <ObjectId>16516</ObjectId>
@@ -1207,13 +1207,13 @@ sequence|table|16498|16474|6
     </column>
     <column id="62" parent="38" name="cantitate">
       <Position>2</Position>
-      <DataType>integer|0s</DataType>
-      <StateNumber>647</StateNumber>
-      <TypeId>23</TypeId>
+      <DataType>bigint|0s</DataType>
+      <StateNumber>729</StateNumber>
+      <TypeId>20</TypeId>
     </column>
     <index id="63" parent="38" name="medicament_cantitate_pk">
       <ObjectId>16556</ObjectId>
-      <StateNumber>647</StateNumber>
+      <StateNumber>729</StateNumber>
       <ColNames>id</ColNames>
       <Unique>1</Unique>
       <Primary>1</Primary>

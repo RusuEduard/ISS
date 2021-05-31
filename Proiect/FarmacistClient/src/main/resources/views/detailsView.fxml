@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.DetailsView">
+   <children>
+      <TableView fx:id="medicamenteTableView" layoutX="62.0" layoutY="38.0" prefHeight="250.0" prefWidth="286.0">
+        <columns>
+          <TableColumn fx:id="nameCol" prefWidth="190.4000244140625" text="Medicament" />
+          <TableColumn fx:id="cantitateCol" prefWidth="95.20001220703125" text="Cantitate" />
+        </columns>
+      </TableView>
+      <Button layoutX="62.0" layoutY="340.0" mnemonicParsing="false" onAction="#onoreazaHandle" text="Onoreaza comanda" />
+      <Button layoutX="205.0" layoutY="340.0" mnemonicParsing="false" onAction="#refuzaHandle" text="Refuza comanda" />
+      <Button layoutX="470.0" layoutY="340.0" mnemonicParsing="false" onAction="#backHandle" text="Inapoi" />
+   </children>
+</AnchorPane>

@@ -5,4 +5,5 @@ include 'Service'
 include 'Server'
 include 'Server'
 include 'Client'
+include 'FarmacistClient'
 

@@ -1,6 +1,7 @@
 package controllers;
 
 import domain.Comanda;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -9,9 +10,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import services.ServiceException;
 
@@ -21,12 +24,13 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-public class ViewComenziController {
+public class ViewComenziController implements IFace{
     private PersonalController controller;
     private Long persId;
 
     public void setController(PersonalController controller){
         this.controller = controller;
+        controller.setController(this);
         initModel();
     }
 
@@ -35,13 +39,17 @@ public class ViewComenziController {
     }
 
     ObservableList<Comanda> comenzi = FXCollections.observableArrayList();
-    private void initModel() {
-        try {
-            List<Comanda> list = StreamSupport.stream(controller.getComenzi().spliterator(), false).collect(Collectors.toList());
-            comenzi.setAll(list);
-        } catch (ServiceException e) {
-            e.printStackTrace();
-        }
+
+    @Override
+    public void initModel() {
+        Platform.runLater(()->{
+            try {
+                List<Comanda> list = StreamSupport.stream(controller.getComenzi().spliterator(), false).collect(Collectors.toList());
+                comenzi.setAll(list);
+            } catch (ServiceException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @FXML
@@ -106,6 +114,32 @@ public class ViewComenziController {
             window.setTitle("Main");
             window.show();
         } catch ( IOException e) {
+            AlertMessage.showErrorMessage(null, e.getMessage());
+        }
+    }
+
+    @FXML
+    private Button cancelOrderButton;
+
+    @FXML
+    void handleOrderSelection(MouseEvent event) {
+        Comanda comanda = comenziTableView.getSelectionModel().getSelectedItem();
+        if(comanda != null && comanda.getStatus().equals("In asteptare")){
+            cancelOrderButton.setVisible(true);
+        }
+        else{
+            cancelOrderButton.setVisible(false);
+        }
+    }
+
+    @FXML
+    void handleCancelOrder(ActionEvent event) {
+        Comanda comanda = comenziTableView.getSelectionModel().getSelectedItem();
+        try {
+            controller.cancelComanda(comanda.getId());
+            initModel();
+            cancelOrderButton.setVisible(false);
+        } catch (ServiceException e) {
             AlertMessage.showErrorMessage(null, e.getMessage());
         }
     }

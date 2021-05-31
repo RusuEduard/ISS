@@ -66,6 +66,18 @@ public class RepoComenziDB implements RepositoryComenzi {
     }
 
     @Override
+    public void updateStatusComanda(String status, Long id) {
+        Connection con = dbUtils.getConnection();
+        try(PreparedStatement statement = con.prepareStatement("UPDATE comanda SET status = ? WHERE id = ?")) {
+            statement.setString(1, status);
+            statement.setLong(2, id);
+            statement.executeUpdate();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
+
+    @Override
     public Comanda findOne(Long aLong) {
         Connection con = dbUtils.getConnection();
         try(PreparedStatement statement = con.prepareStatement("select * from comanda where id = ?")){

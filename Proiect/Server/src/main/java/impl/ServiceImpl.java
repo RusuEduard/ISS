@@ -12,6 +12,7 @@ import services.IObserver;
 import services.IServices;
 import services.ServiceException;
 
+import java.rmi.RemoteException;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -75,6 +76,17 @@ public class ServiceImpl implements IServices {
     @Override
     public void saveComanda(Comanda comanda) {
         comenziRepo.save(comanda);
+        update();
+    }
+
+    private void update() {
+        loggedUsers.forEach((key, value) -> {
+            try {
+                value.statusUpdated();
+            } catch (RemoteException e) {
+                e.printStackTrace();
+            }
+        });
     }
 
     @Override
@@ -82,5 +94,25 @@ public class ServiceImpl implements IServices {
         return comenziRepo.findAll();
     }
 
+    @Override
+    public void updateStatusComanda(String status, long id) throws ServiceException {
+        comenziRepo.updateStatusComanda(status, id);
+        update();
+    }
+
+    @Override
+    public Map<Medicament, Long> getMedsCant() throws ServiceException {
+        return medsRepo.get_medicamente_cantitate();
+    }
+
+    @Override
+    public void updateStoc() throws ServiceException {
+        medsRepo.updateCantitati();
+    }
+
+    @Override
+    public void updateMedCantitate(Long id, Long val) throws ServiceException {
+        medsRepo.updateCantitate(id, val);
+    }
 
 }

@@ -1,0 +1,18 @@
+controllers/AlertMessage.java
+ controllers.AlertMessage
+controllers/Iface.java
+ controllers.Iface
+controllers/FarmacistController.java
+ controllers.FarmacistController
+controllers/LogInController.java
+ controllers.LogInController
+controllers/MainPageController.java
+ controllers.MainPageController
+controllers/StockController.java
+ controllers.StockController
+ controllers.StockController$Med_cant
+controllers/DetailsView.java
+ controllers.DetailsView
+ controllers.DetailsView$Med_cant
+main/MainFx.java
+ main.MainFx

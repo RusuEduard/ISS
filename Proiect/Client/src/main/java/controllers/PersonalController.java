@@ -14,6 +14,7 @@ import java.util.List;
 
 public class PersonalController extends UnicastRemoteObject implements IObserver {
     private IServices server;
+    private IFace controller;
     public PersonalController() throws RemoteException {
     }
 
@@ -35,5 +36,18 @@ public class PersonalController extends UnicastRemoteObject implements IObserver
 
     public Iterable<Comanda> getComenzi() throws ServiceException {
         return server.getComenzi();
+    }
+
+    public void cancelComanda(Long id) throws ServiceException {
+        server.updateStatusComanda("Canceled", id);
+    }
+
+    @Override
+    public void statusUpdated() throws RemoteException{
+        controller.initModel();
+    }
+
+    public void setController(IFace viewComenziController) {
+        this.controller = viewComenziController;
     }
 }
